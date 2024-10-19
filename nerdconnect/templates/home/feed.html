@@ -13,6 +13,7 @@
     
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <style>
@@ -358,6 +359,10 @@
                         <i class='bx bx-search-alt-2 nav_icon'></i> 
                         <span class="nav_name">Search Nerds</span> 
                     </a> 
+                    <a href="{% url 'followers' user %}" class="nav_link "> 
+                        <i class="fas fa-users nav_icon"></i>
+                        <span class="nav_name">Your Followers</span> 
+                    </a>
                     <a href="{% url 'create' %}" class="nav_link"> 
                         <i class='bx bx-message-square-detail nav_icon'></i> 
                         <span class="nav_name">Create</span> 

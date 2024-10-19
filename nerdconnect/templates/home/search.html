@@ -13,6 +13,7 @@
     
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <style>
@@ -388,6 +389,32 @@ h4 {
             margin-left: 20px;
         }
     }
+
+
+.search-result-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #fff; /* or your preferred background color */
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s ease;
+}
+
+.search-result-item:hover {
+    background-color: #f1f1f1; /* Add hover effect */
+}
+
+.search-result-anchor {
+    display: block;
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit; /* Ensure the link inherits the text color */
+}
+
+
+
+
    
 </style>
 <body id="body-pd">
@@ -418,6 +445,10 @@ h4 {
                         <i class='bx bx-search-alt-2 nav_icon'></i> 
                         <span class="nav_name">Search Nerds</span> 
                     </a> 
+                    <a href="{% url 'followers' user %}" class="nav_link "> 
+                        <i class="fas fa-users nav_icon"></i>
+                        <span class="nav_name">Your Followers</span> 
+                    </a>
                     <a href="{% url 'create' %}" class="nav_link"> 
                         <i class='bx bx-message-square-detail nav_icon'></i> 
                         <span class="nav_name">Create</span> 
@@ -465,21 +496,22 @@ h4 {
                 <a href="{% url 'someuser' user.username %}">{{ user.username }}</a>
             </li> -->
             {% load static %}
+            
             <section class="search-result-item">
-                <a class="image-link" href="#"><img class="image" src="{{ user.images }}" alt="User Image"></a>
-                <div class="search-result-item-body">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <h4 class="search-result-item-heading"><a href="#">{{ user.username }}</a></h4>
-            
-                            <!-- Access bio directly from user object -->
-                            <p class="info">{{ user.bio }}</p>
-            
+                <a class="search-result-anchor" href="{% url 'someuser' user %}">
+                    <div class="image-link"><img class="image" src="{{ user.images }}" alt="User Image"></div>
+                    <div class="search-result-item-body">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <h4 class="search-result-item-heading">{{ user.username }}</h4>
+                                <p class="info">{{ user.bio }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </section>
-                                
+            
+           
         {% endfor %}
     </ul>
     <hr class="hr">

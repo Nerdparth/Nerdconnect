@@ -17,6 +17,7 @@ from home.views import (
     Search,
     UserPosts,
     date_requests,
+    followers,
 )
 from django.conf.urls.static import static
 from django.conf import settings
@@ -36,6 +37,7 @@ urlpatterns = [
     path("search/", Search, name="search"),
     path("posts/", UserPosts, name="userposts"),
     path("send_request/<str:username>", date_requests, name="daterequest"),
-    path("", index),
+    path("followers/<str:username>", followers, name="followers"),
+    path("", index)
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

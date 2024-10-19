@@ -80,7 +80,6 @@
     .l-navbar {
         position: fixed;
         top: 0;
-        bottom: 0;
         left: -30%;
         width: var(--nav-width);
         height: 100vh;
@@ -91,7 +90,7 @@
     }
 
     .nav {
-        height: 100vh;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -167,20 +166,8 @@
         padding-bottom: 0; /* Remove bottom padding */
     }
 
-    .mb-3 {
-        margin-top: 20px;
-    }
-
-    h1 {
-        padding-left: 300px;
-        padding-top: 100px;
-        padding-bottom: 60px;
-        text-align: center;
-        font-size: 2rem;
-    }
-
-    .social-feed-box {
-        margin-top: 20px;
+    .mb-3{
+        margin-top: 20px
     }
     .toast {
     visibility: hidden; /* Hidden by default. Visible on click */
@@ -221,16 +208,140 @@
     bottom: 50px; /* Move it up a bit */
 }
 .footer{
-    margin-top: 0px;
+    margin-bottom: 10px;
     text-align: center;
    
 }
 .hr{
     color: grey;
     opacity: 0.3;
-    width: 1400px;
+    width: 1350px;
+    margin-left: 30px;
 }
-    @media screen and (min-width: 768px) {
+.search-result-item {
+    padding-top: 15px;
+    border-radius: 10%;
+    background-color: #fff;
+    border-radius: 4px
+}
+
+.search-result-item:after,
+.search-result-item:before {
+    content: " ";
+    display: table
+}
+
+.search-result-item:after {
+    clear: both
+}
+
+.search-result-item .image-link {
+    display: block;
+    overflow: hidden;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+
+@media (min-width:768px) {
+    .search-result-item .image-link {
+        display: inline-block;
+        margin: -20px 0 -20px -20px;
+        float: left;
+        width: 200px
+    }
+}
+
+@media (max-width:767px) {
+    .search-result-item .image-link {
+        max-height: 200px
+
+    }
+}
+
+@media (max-width: 500px) {
+    .search-result-item {
+    display: flex;
+    align-items: flex-start; /* Ensure items align properly */
+    margin: 10px 0; /* Add vertical spacing between items */
+    padding: 10px; /* Add padding for breathing room */
+    border: 1px solid #ddd; /* Optional: add a border for better visibility */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+.image-link {
+    margin-right: 10px; /* Spacing between image and text */
+}
+
+img {
+    margin: 10px !important; /* Remove margin to avoid cutting off */
+    width: 60px; /* Set a fixed width for consistency */
+    height: 60px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    border-radius: 50%; /* Optional: round the image for a profile effect */
+}
+
+h4 {
+    font-size: 18px; /* Set a consistent font size */
+    margin: 15px; /* Reset margin */
+    word-wrap: break-word; /* Allow wrapping for long usernames */
+    overflow-wrap: break-word; /* Ensure long words break */
+    max-width: 200px; /* Set a max width for the heading */
+}
+
+.info {
+    margin-left: 20px; /* Space between the heading and info */
+    margin-top: 5px; /* Space between the heading and info */
+}
+
+
+}
+
+.search-result-item .image {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin: 25px;
+    margin-left: 55px;
+    margin-top: 18px;
+}
+
+.search-result-item .info {
+    margin-top: 2px;
+    font-size: 12px;
+    color: #999
+}
+
+.search-result-item .description {
+    font-size: 13px
+}
+
+.search-result-item+.search-result-item {
+    margin-top: 20px
+}
+
+@media (min-width:768px) {
+    .search-result-item-body {
+        margin-left: 200px
+    }
+}
+
+.search-result-item-heading {
+    font-weight: 400
+}
+
+.search-result-item-heading>a {
+    color: #555
+}
+
+@media (min-width:768px) {
+    .search-result-item-heading {
+        margin: 0
+    }
+}
+    
+    
+    @media screen and (min-width: 500px) {
         body {
             margin: calc(var(--header-height) + 1rem) 0 0 0;
             padding-left: calc(var(--nav-width) + 2rem);
@@ -262,39 +373,50 @@
             margin-left: 30px;
             
         }
-        h1 {
-        padding-left: 00px;
-        padding-top: 100px;
-        padding-bottom: 60px;
-        text-align: center;
-        font-size: 2rem;
-    }
    
     }
     @media screen and (max-width: 500px){
         .footer{
             font-size: 15px;
             width: 290px;
+            margin-left: 30px;
         }
 
         .hr{
-            width: 290px;
+            width: 320px;
             color: grey;
             opacity: 0.3;
+            margin-left: 20px;
         }
     }
 
-    @media screen and (max-width: 400px) {
-        h1 {
-        padding-left: 00px;
-        padding-top: 100px;
-        padding-bottom: 60px;
-        text-align: center;
-        font-size: 2rem;
-    }
-    }
-</style>
 
+.search-result-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #fff; /* or your preferred background color */
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s ease;
+}
+
+.search-result-item:hover {
+    background-color: #f1f1f1; /* Add hover effect */
+}
+
+.search-result-anchor {
+    display: block;
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit; /* Ensure the link inherits the text color */
+}
+
+
+
+
+   
+</style>
 <body id="body-pd">
     {% if messages %}
     {% for message in messages %}
@@ -315,7 +437,7 @@
                     <span class="nav_logo-name" style="color: white;">NerdConnect</span> 
                 </a>
                 <div class="nav_list"> 
-                    <a href="{% url 'home' user %}" class="nav_link"> 
+                    <a href="{% url 'home' user.username %}" class="nav_link"> 
                         <i class='bx bx-user nav_icon'></i> 
                         <span class="nav_name">Your Profile</span> 
                     </a> 
@@ -331,7 +453,6 @@
                         <i class='bx bx-message-square-detail nav_icon'></i> 
                         <span class="nav_name">Create</span> 
                     </a> 
-                    
                     <a href="{% url 'userposts' %}" class="nav_link"> 
                         <i class='bx bx-bookmark nav_icon'></i> 
                         <span class="nav_name">Your Thoughts</span> 
@@ -349,39 +470,46 @@
         </nav>
     </div>
 
-    <div class="the-heading"><h1 class="the-heading">Nerd<b class="the-heading" style="color: rgb(69, 69, 247);">Connect</b> / Your Posts</h1></div>
-    {% load static %}
-    <div class="container">
-        <div class="col-md-7">
-            {% for item in post %}
-            <div class="social-feed-separated">
-                <div class="social-avatar">
-                    <a href="{% url 'home' user %}">
-                        <img style="width: 50px;" alt="profile image"
-                             src="{% if images %}{{ images.url }}{% else %}{% static 'default.png' %}{% endif %}">
-                        
-                    </a>
-                </div>
+
     
-                <div class="social-feed-box">
-                    <div class="social-avatar">
-                        <a href="{% url 'home' user %}">
-                            {{ user }}
-                        </a>
-                        <small class="text-muted">{{ item.created_at }}</small>
+    <h2 style="padding-top: 40px;">Followers of {{ followers_of }}</h2>
+
+{% if followers %}
+    <ul>
+        {% for follower in followers %}
+            <!-- <li>
+                <a href="{% url 'someuser' user.username %}">{{ user.username }}</a>
+            </li> -->
+            {% load static %}
+            
+            <section class="search-result-item">
+                <a class="search-result-anchor" href="{% url 'someuser' follower.username %}">
+                    <div class="image-link"><img class="image" src="{{ follower.images }}" alt="User Image"></div>
+                    <div class="search-result-item-body">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <h4 class="search-result-item-heading">{{ follower.username }}</h4>
+                                <p class="info">{{ follower.bio }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="social-body">
-                        <p>
-                            {{ item.post }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    
-    <footer class="footer"><hr class="hr">A <a href="https://www.linkedin.com/in/parth-kapoor-151436269/">Parth Kapoor</a> production <br> NerdConnect &#169; 2024 All Rights Reserved</footer>
+                </a>
+            </section>
+            
+           
+        {% endfor %}
+    </ul>
+    <hr class="hr">
+    <footer class="footer">A <a href="https://www.linkedin.com/in/parth-kapoor-151436269/">Parth Kapoor</a> production <br> NerdConnect &#169; 2024 All Rights Reserved</footer>
+ 
+{% else %} 
+    <p>No Followers to show.</p>
+    <hr class="hr">
+    <footer class="footer">A <a href="https://www.linkedin.com/in/parth-kapoor-151436269/">Parth Kapoor</a> production <br> NerdConnect &#169; 2024 All Rights Reserved</footer>
+ 
+{% endif %}
+
+
     <!-- Import Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

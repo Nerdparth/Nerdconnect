@@ -1,18 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ details.image.url }}</title>
-    
+
     <!-- Import Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="icon" href="{% static 'trollface.png' %}" type="image/png">
     <!-- Import Box Icons -->
     <link href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
-    
+
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <style>
@@ -156,6 +158,7 @@
         border-radius: 50%;
         width: 120px;
         height: 120px;
+        object-fit: cover;
     }
 
     .main-body {
@@ -172,18 +175,18 @@
     }
     .toast {
     visibility: hidden; /* Hidden by default. Visible on click */
-    min-width: 250px; 
-    background-color: #fafafa; 
-    color: #fff; 
-    text-align: center; 
-    border-radius: 12px; 
-    padding: 16px; 
+    min-width: 250px;
+    background-color: #fafafa;
+    color: #fff;
+    text-align: center;
+    border-radius: 12px;
+    padding: 16px;
     position: absolute;
-    z-index: 10; 
+    z-index: 10;
     bottom: 10%;
-    left: 50%; 
+    left: 50%;
     transform: translate(-50%, -50%);
-    bottom: 30px; 
+    bottom: 30px;
     font-size: 17px;
     opacity: 0; /* Invisible by default */
     transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
@@ -211,23 +214,23 @@
 .footer{
     margin-top: 0px;
     text-align: center;
-   
+
 }
 .hr{margin-top: 5px;
     color: grey;
     opacity: 0.3;
 width: 1200px;}
-    
+
 .date-btn{
     border-radius: 20px;
     border-color: transparent;
-    background-color: rgb(255, 85, 113);
+
     margin-left: 15px ;
     margin-bottom: 20px;
     transition: 1s ease;
 }
 
-.date-btn:hover{ 
+.date-btn:hover{
     color: rgb(0, 0, 0);
 background-color: rgb(194, 2, 140);
 border-color: transparent;}
@@ -267,9 +270,9 @@ border-color: transparent;}
         }
         .acs-btn{
             margin-left: 30px;
-            
+
         }
-   
+
     }
     @media screen and (max-width: 500px){
         .footer{
@@ -284,7 +287,7 @@ border-color: transparent;}
             width: 290px;
         }
     }
-   
+
 </style>
 
 <body id="body-pd">
@@ -294,45 +297,48 @@ border-color: transparent;}
     {% endfor %}
     {% endif %}
     <header class="header" id="header">
-        <div class="header_toggle"> 
-            <i class='bx bx-menu' id="header-toggle"></i> 
+        <div class="header_toggle">
+            <i class='bx bx-menu' id="header-toggle"></i>
         </div>
     </header>
 
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> 
-                <a href="#" class="nav_logo"> 
-                    <i class='bx bx-layer nav_logo-icon'></i> 
-                    <span class="nav_logo-name" style="color: white;">NerdConnect</span> 
+            <div>
+                <a href="#" class="nav_logo">
+                    <i class='bx bx-layer nav_logo-icon'></i>
+                    <span class="nav_logo-name" style="color: white;">NerdConnect</span>
                 </a>
-                <div class="nav_list"> 
-                    <a href="{% url 'home' user.username %}" class="nav_link"> 
-                        <i class='bx bx-user nav_icon'></i> 
-                        <span class="nav_name">Your Profile</span> 
-                    </a> 
-                    <a href="{% url 'search' %}" class="nav_link "> 
-                        <i class='bx bx-search-alt-2 nav_icon'></i> 
-                        <span class="nav_name">Search Nerds</span> 
-                    </a> 
-                    
-                    <a href="{% url 'create' %}" class="nav_link"> 
-                        <i class='bx bx-message-square-detail nav_icon'></i> 
-                        <span class="nav_name">Create</span> 
-                    </a> 
-                    <a href="{% url 'userposts' %}" class="nav_link"> 
-                        <i class='bx bx-bookmark nav_icon'></i> 
-                        <span class="nav_name">Your Thoughts</span> 
-                    </a> 
-                    <a href="{% url 'feed' %}" class="nav_link"> 
-                        <i class='bx bx-folder nav_icon'></i> 
-                        <span class="nav_name">Feed</span> 
-                    </a> 
+                <div class="nav_list">
+                    <a href="{% url 'home' user.username %}" class="nav_link">
+                        <i class='bx bx-user nav_icon'></i>
+                        <span class="nav_name">Your Profile</span>
+                    </a>
+                    <a href="{% url 'search' %}" class="nav_link ">
+                        <i class='bx bx-search-alt-2 nav_icon'></i>
+                        <span class="nav_name">Search Nerds</span>
+                    </a>
+                    <a href="{% url 'followers' user.username %}" class="nav_link ">
+                        <i class="fas fa-users nav_icon"></i>
+                        <span class="nav_name">Your Followers</span>
+                    </a>
+                    <a href="{% url 'create' %}" class="nav_link">
+                        <i class='bx bx-message-square-detail nav_icon'></i>
+                        <span class="nav_name">Create</span>
+                    </a>
+                    <a href="{% url 'userposts' %}" class="nav_link">
+                        <i class='bx bx-bookmark nav_icon'></i>
+                        <span class="nav_name">Your Thoughts</span>
+                    </a>
+                    <a href="{% url 'feed' %}" class="nav_link">
+                        <i class='bx bx-folder nav_icon'></i>
+                        <span class="nav_name">Feed</span>
+                    </a>
                 </div>
-            </div> 
-            <a href="{% url 'logout' %}" class="nav_link"> 
-                <i class='bx bx-log-out nav_icon'></i> 
-                <span class="nav_name">Sign Out</span> 
+            </div>
+            <a href="{% url 'logout' %}" style="margin-bottom: 80px;" class="nav_link">
+                <i class='bx bx-log-out nav_icon'></i>
+                <span class="nav_name">Sign Out</span>
             </a>
         </nav>
     </div>
@@ -356,12 +362,12 @@ border-color: transparent;}
 
                                         <p class="text-secondary mb-1">{{ details.tagline }}</p>
                                         <p class="text-muted font-size-sm">Relationship Status: <b>{{ details.relationship }}</b></p>
-                                        <p class="text-muted font-size-sm">Received Date Requests : <b>  {{ no_of_requests }}</b></p>
+                                        <p class="text-muted font-size-sm"><a href="{% url 'followers' details.user %}">Followers : <b>  {{ no_of_requests }}</a></b></p>
                                     </div>
                                     {% if check %}
-                                    <button class="btn date-btn btn-primary" disabled>date request sent</button>
+                                    <button class="btn date-btn btn-primary" disabled>Following</button>
                                     {% else %}
-                                    <button class="btn date-btn btn-primary"><a style="color: white;" href="{% url 'daterequest' username  %}">date request</a></button>
+                                    <button class="btn date-btn btn-primary"><a style="color: white;" href="{% url 'daterequest' username  %}">Follow</a></button>
                                     {% endif %}
                                 </div>
                             </div>
@@ -456,18 +462,18 @@ border-color: transparent;}
 
                         </div>
 
-                        
+
                     </div>
-                    
+
                 </div>
                 <footer class="footer"><hr class="hr">A <a href="https://www.linkedin.com/in/parth-kapoor-151436269/">Parth Kapoor</a> production <br> NerdConnect &#169; 2024 All Rights Reserved</footer>
 
-                
+
             </div>
         </div>
-       
+
     </div>
-    
+
     <!-- Import Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
